@@ -3,7 +3,6 @@
   "short_name": "UMA LAB",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#061219",
-  "theme_color": "#061219",
-  "lang": "ja"
+  "background_color": "#06151b",
+  "theme_color": "#06151b"
 }

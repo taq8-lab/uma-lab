@@ -1,25 +1,52 @@
 <!doctype html>
-<html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#061219"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="UMA LAB"><link rel="manifest" href="manifest.json"><title>UMA LAB v2</title>
+<html lang="ja">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#06151b"><link rel="manifest" href="manifest.json">
+<title>UMA LAB v3</title>
 <style>
-*{box-sizing:border-box}body{margin:0;background:#061219;color:#f4f7f8;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.app{max-width:520px;margin:auto;min-height:100vh;padding:24px 18px 95px}.brand{font-size:28px;font-weight:900}.sub,.muted{color:#8ea2ad}.hero,.card{background:#0b1c25;border:1px solid #1e3b47;border-radius:20px;padding:18px;margin:14px 0}.hero{padding:28px 20px;background:linear-gradient(135deg,#0d2b22,#071219)}h1{font-size:30px;margin:10px 0}h2{font-size:21px}.race,.horse,.bet{display:flex;align-items:center;gap:13px}.venue{background:#00b979;color:#032116;padding:10px;border-radius:10px;font-weight:900}.grow{flex:1}.big{font-size:18px;font-weight:800}.small{font-size:13px;color:#8ea2ad;margin-top:4px}.score{color:#00df91;font-weight:900}.num{width:38px;height:38px;background:#fff;color:#111;border-radius:10px;display:grid;place-items:center;font-weight:900}.primary{width:100%;border:0;border-radius:15px;padding:17px;background:#00df91;color:#022016;font-weight:900;font-size:18px;margin:15px 0}.back{border:0;background:none;color:#00df91;font-weight:800;padding:0}.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);width:min(520px,100%);display:grid;grid-template-columns:repeat(5,1fr);background:#051016;border-top:1px solid #1e3b47;padding:10px 4px max(10px,env(safe-area-inset-bottom))}.nav{border:0;background:none;color:#718893;font-size:11px}.nav b{display:block;font-size:20px}.nav.active{color:#00df91}.input{width:100%;padding:14px;border:1px solid #1e3b47;border-radius:12px;background:#081820;color:white;margin:5px 0 12px}.amount{margin-left:auto;color:#ffc857;font-weight:900}.mark{font-size:25px;font-weight:900;color:#ffdf54}.bar{height:7px;background:#17313c;border-radius:10px;overflow:hidden;margin:6px 0 12px}.fill{height:100%;background:#00df91}.notice{font-size:12px;color:#8ea2ad;line-height:1.5}
-</style></head><body><div class="app"><div class="brand">♞ UMA LAB</div><div class="sub">データで競馬を科学する</div><main id="v"></main></div>
-<nav class="bottom"><button class="nav active" data-p="home"><b>⌂</b>ホーム</button><button class="nav" data-p="races"><b>♞</b>レース</button><button class="nav" data-p="ai"><b>✦</b>AI予想</button><button class="nav" data-p="bets"><b>▣</b>買い目</button><button class="nav" data-p="my"><b>●</b>マイページ</button></nav>
+*{box-sizing:border-box}body{margin:0;background:#06151b;color:#f5f7f8;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif}
+main{max-width:760px;margin:auto;padding:34px 20px 120px}.brand{font-size:30px;font-weight:900;letter-spacing:1px}.sub{color:#8198a2;font-size:16px;margin-top:2px}
+.back{color:#00d99a;font-weight:800;margin:18px 0;cursor:pointer}.title{font-size:28px;font-weight:900;margin:24px 0}
+.card{background:#0a2028;border:1px solid #214551;border-radius:22px;padding:20px;margin:14px 0}
+.horse{font-size:23px;font-weight:900}.muted{color:#91a5ad}.green{color:#00d99a}.score{font-size:19px;font-weight:900}
+.bar{height:8px;background:#173944;border-radius:8px;overflow:hidden;margin:7px 0 16px}.fill{height:100%;background:#00d99a}
+.row{display:flex;justify-content:space-between;gap:12px}.race{border-top:1px solid #1c3a44;padding:16px 0}.race:first-child{border-top:0;padding-top:0}
+.racehead{display:flex;justify-content:space-between;align-items:center}.place{font-weight:800}.finish{font-size:22px;font-weight:900}.meta{color:#a4b3b9;font-size:14px;margin:5px 0}
+.passage{font-size:20px;font-weight:900;margin-top:8px}.note{color:#00d99a;font-size:14px;font-weight:800;margin-top:4px}.last3f{font-weight:800;margin-top:9px}
+.badge{font-size:12px;border:1px solid #2e5a67;border-radius:999px;padding:4px 8px;color:#c7d3d7}
+nav{position:fixed;bottom:0;left:0;right:0;background:#06151bf2;border-top:1px solid #214551;padding:13px 8px 22px;display:flex;justify-content:space-around;color:#8198a2}
+nav span{font-size:13px}.active{color:#00d99a}
+</style></head>
+<body><main>
+<div class="brand">♞ UMA LAB</div><div class="sub">データで競馬を科学する</div>
+<div class="back">‹ 出走馬一覧</div>
+<div class="title">3. ノーブルキング</div>
+<div class="card"><div class="horse">C.ルメール</div><div class="muted">脚質　差し</div></div>
+<div class="card">
+<div class="score green">UMA LAB AI指数 91/100</div>
+<div class="row"><span>距離適性</span><span>94</span></div><div class="bar"><div class="fill" style="width:94%"></div></div>
+<div class="row"><span>コース適性</span><span>91</span></div><div class="bar"><div class="fill" style="width:91%"></div></div>
+<div class="row"><span>展開適性</span><span>92</span></div><div class="bar"><div class="fill" style="width:92%"></div></div>
+</div>
+<div class="title" style="font-size:23px">直近5走</div>
+<div class="card" id="history"></div>
+<div class="card">
+<div class="score green">AIレース内容分析</div>
+<p style="line-height:1.65;margin-bottom:0">近走は中団〜後方からの競馬が中心。前走は <b>12-11-6-2</b> と3〜4角で大きく位置を上げ、上がり3Fもメンバー最速。<b>後方から長く脚を使って進出できるタイプ</b>として評価。</p>
+</div>
+</main>
+<nav><span>⌂<br>ホーム</span><span class="active">♞<br>レース</span><span>✦<br>AI予想</span><span>▣<br>買い目</span><span>●<br>マイページ</span></nav>
 <script>
-const R=[{id:1,v:"中山",r:"11R",t:"15:45",c:"芝2200m",n:"UMA LAB記念"},{id:2,v:"阪神",r:"11R",t:"15:35",c:"芝1800m",n:"サンプルS"},{id:3,v:"中山",r:"10R",t:"15:10",c:"ダ1800m",n:"サンプル特別"}];
-const H=[["アルファスター","横山 武史",87,"先行",92,86,90],["グリーンアロー","戸崎 圭太",82,"差し",85,89,79],["ノーブルキング","C.ルメール",91,"差し",94,91,92],["サザンブレイブ","坂井 瑠星",76,"逃げ",78,74,84],["ミッドナイトベル","川田 将雅",84,"先行",88,83,85],["ブルームーン","松山 弘平",72,"追込",80,77,70]].map((x,i)=>({no:i+1,name:x[0],j:x[1],s:x[2],style:x[3],dist:x[4],track:x[5],pace:x[6]}));
-let S={p:"home",race:R[0],horse:H[0],budget:5000};
-const v=document.getElementById("v");
-const rc=x=>`<div class="card race" onclick="openRace(${x.id})"><div class="venue">${x.v}</div><div class="grow"><div class="big">${x.r} ${x.n}</div><div class="small">${x.t}　${x.c}</div></div><b>›</b></div>`;
-function home(){v.innerHTML=`<div class="hero"><div>本日の注目レース</div><h1>AIで勝負レースを発見</h1><div class="muted">馬場・展開・適性をまとめて分析</div></div><h2>🏇 今日のレース</h2>${R.map(rc).join("")}<button class="primary" onclick="openRace(1)">✦ AI予想する</button><p class="notice">現在は操作確認用のサンプルデータです。実際のレース情報・オッズ・予想ではありません。</p>`}
-function races(){v.innerHTML=`<h2>レース一覧</h2>${R.map(rc).join("")}`}
-function openRace(id){S.race=R.find(x=>x.id==id);S.p="race";render()}
-function race(){v.innerHTML=`<button class="back" onclick="go('races')">‹ レース一覧</button><h2>${S.race.v} ${S.race.r} ${S.race.n}</h2><div class="muted">${S.race.t} ${S.race.c}</div>${H.map(h=>`<div class="card horse" onclick="openHorse(${h.no})"><div class="num">${h.no}</div><div class="grow"><div class="big">${h.name}</div><div class="small">${h.j}　${h.style}</div></div><div class="score">${h.s}<div class="small">AI指数</div></div></div>`).join("")}<button class="primary" onclick="go('ai')">✦ このレースをAI分析</button>`}
-function openHorse(n){S.horse=H[n-1];S.p="horse";render()}
-function m(k,n){return `<div><span>${k}</span><span style="float:right">${n}</span><div class="bar"><div class="fill" style="width:${n}%"></div></div></div>`}
-function horse(){let h=S.horse;v.innerHTML=`<button class="back" onclick="openRace(${S.race.id})">‹ 出走馬一覧</button><h2>${h.no}. ${h.name}</h2><div class="card"><div class="big">${h.j}</div><div class="small">脚質 ${h.style}</div></div><div class="card"><div class="score">UMA LAB AI指数 ${h.s}/100</div>${m("距離適性",h.dist)}${m("コース適性",h.track)}${m("展開適性",h.pace)}</div>`}
-function ai(){let a=[...H].sort((x,y)=>y.s-x.s).slice(0,4),mk=["◎","○","▲","☆"];v.innerHTML=`<h2>✦ AI予想</h2><div class="muted">${S.race.v} ${S.race.r}</div>${a.map((h,i)=>`<div class="card race"><div class="mark">${mk[i]}</div><div class="grow"><div class="big">${h.no}. ${h.name}</div><div class="small">${h.j}　${h.style}</div></div><div class="score">${h.s}</div></div>`).join("")}<button class="primary" onclick="go('bets')">買い目を作成 →</button><p class="notice">表示はデモ予想です。</p>`}
-function bets(){let b=Math.floor((+S.budget||5000)/100)*100,a=Math.floor(b*.4/100)*100,c=Math.floor(b*.35/100)*100,d=b-a-c;v.innerHTML=`<h2>▣ 買い目作成</h2><div class="card"><div class="small">予算</div><input class="input" type="number" step="100" value="${S.budget}" onchange="S.budget=this.value"><select class="input"><option>三連複</option><option>馬連</option><option>ワイド</option></select><button class="primary" onclick="render()">予算配分を計算</button></div>${[["3 - 1 - 5",a],["3 - 2 - 5",c],["3 - 1 - 2",d]].map(x=>`<div class="card bet"><div><div class="small">三連複</div><div class="big">${x[0]}</div></div><div class="amount">${x[1].toLocaleString()}円</div></div>`).join("")}<p class="notice">買い目・配分は機能確認用です。20歳未満の方は勝馬投票券を購入できません。</p>`}
-function my(){v.innerHTML=`<h2>マイページ</h2><div class="card"><div class="big">UMA LAB β / 第2版</div><div class="small">レース選択 → 出走馬 → AI評価 → 買い目作成まで操作可能</div></div><div class="card"><b>次の開発</b><p class="muted">実データ接続 / AI API / 予想履歴 / 回収率分析</p></div>`}
-function go(p){S.p=p;render()}function render(){document.querySelectorAll(".nav").forEach(n=>n.classList.toggle("active",n.dataset.p==S.p));({home,races,race,horse,ai,bets,my}[S.p]||home)();scrollTo(0,0)}
-document.querySelectorAll(".nav").forEach(n=>n.onclick=()=>go(n.dataset.p));render();
+const races=[
+["前走","芝2000m・良","2着","12-11-6-2","後方から一気に進出","33.8秒","1位"],
+["2走前","芝1800m・良","5着","10-10-9-7","後方から差を詰める","34.1秒","2位"],
+["3走前","芝2000m・稍重","1着","7-7-5-2","中団から徐々に進出","34.5秒","3位"],
+["4走前","芝2200m・良","3着","8-8-7-4","中団後方から進出","34.0秒","2位"],
+["5走前","芝1800m・良","1着","4-4-3-1","好位から抜け出し","33.9秒","1位"]
+];
+document.getElementById("history").innerHTML=races.map(r=>`
+<div class="race"><div class="racehead"><span class="place">${r[0]}　<span class="badge">${r[1]}</span></span><span class="finish">${r[2]}</span></div>
+<div class="meta">通過順位</div><div class="passage">${r[3]}</div><div class="note">↗ ${r[4]}</div>
+<div class="last3f">上がり3F　${r[5]} <span class="green">（${r[6]}）</span></div></div>`).join("");
 </script></body></html>
