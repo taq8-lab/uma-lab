@@ -1,56 +1,52 @@
 <!doctype html><html lang="ja"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-<meta name="theme-color" content="#06151b"><link rel="manifest" href="manifest.json?v=5">
-<title>UMA LAB v5</title>
+<meta name="theme-color" content="#06151b"><link rel="manifest" href="manifest.json?v=6"><title>UMA LAB v6</title>
 <style>
 *{box-sizing:border-box}body{margin:0;background:#06151b;color:#f4f7f8;font-family:-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif}
-main{max-width:760px;margin:auto;padding:30px 18px 120px}.brand{font-size:29px;font-weight:900}.sub,.muted{color:#8ca0a8}.green{color:#00d99a}
-h1{font-size:27px}.card{background:#0a2028;border:1px solid #214551;border-radius:20px;padding:18px;margin:14px 0}
-label{display:block;font-weight:800;margin:14px 0 7px}input,select{width:100%;background:#071920;color:white;border:1px solid #2b515d;border-radius:13px;padding:14px;font-size:17px}
-.segment{display:grid;grid-template-columns:repeat(3,1fr);gap:7px}.segment button{border:1px solid #2b515d;background:#0c2730;color:#a9bbc1;border-radius:12px;padding:11px 5px;font-weight:800}
-.segment .on{background:#00d99a;color:#032119;border-color:#00d99a}.btn{width:100%;border:0;border-radius:15px;padding:15px;background:#00d99a;color:#032119;font-size:17px;font-weight:900;margin-top:17px}
-.bet{border-top:1px solid #1d3c46;padding:15px 0}.bet:first-child{border-top:0}.row{display:flex;justify-content:space-between;gap:10px}.combo{font-size:20px;font-weight:900}.yen{font-size:20px;font-weight:900;color:#00d99a}.why{font-size:13px;color:#a9bbc1;margin-top:6px;line-height:1.5}
-.total{font-size:22px;font-weight:900}.notice{font-size:12px;color:#71878f;line-height:1.5}.version{text-align:right;color:#58717a;font-size:11px}
-nav{position:fixed;bottom:0;left:0;right:0;background:#06151bf2;border-top:1px solid #214551;padding:12px 7px 22px;display:flex;justify-content:space-around;color:#8198a2}nav span{font-size:12px;text-align:center}.active{color:#00d99a}
+main{max-width:760px;margin:auto;padding:28px 18px 120px}.brand{font-size:29px;font-weight:900}.sub,.muted{color:#8ca0a8}.green{color:#00d99a}
+h1{font-size:27px;margin:25px 0 8px}h2{font-size:21px}.card{background:#0a2028;border:1px solid #214551;border-radius:20px;padding:17px;margin:13px 0;cursor:pointer}
+.row{display:flex;justify-content:space-between;gap:10px;align-items:center}.horse{font-size:20px;font-weight:900}.score{font-size:20px;font-weight:900;color:#00d99a}
+.badge{border:1px solid #2c5662;border-radius:999px;padding:4px 8px;font-size:12px}.btn{width:100%;border:0;border-radius:15px;padding:15px;background:#00d99a;color:#032119;font-size:17px;font-weight:900}
+.back{color:#00d99a;font-weight:800;margin-top:18px;cursor:pointer}.bar{height:7px;background:#173944;border-radius:8px;overflow:hidden;margin:6px 0 14px}.fill{height:100%;background:#00d99a}
+.race{border-top:1px solid #1d3c46;padding:14px 0}.race:first-child{border-top:0}.passage{font-size:19px;font-weight:900}.note{color:#00d99a;font-size:13px;font-weight:800}
+.pick{display:grid;grid-template-columns:42px 1fr auto;gap:10px}.mark{font-size:25px;font-weight:900}.risk{color:#e8c86b;font-size:13px;margin-top:7px}
+input,select{width:100%;background:#071920;color:#fff;border:1px solid #2b515d;border-radius:13px;padding:13px;font-size:16px;margin:7px 0 13px}
+.segment{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}.segment button{background:#0c2730;color:#a9bbc1;border:1px solid #2b515d;border-radius:11px;padding:10px}.segment .on{background:#00d99a;color:#032119}
+.page{display:none}.page.on{display:block}.version{text-align:right;color:#58717a;font-size:11px;margin-top:18px}
+nav{position:fixed;bottom:0;left:0;right:0;background:#06151bf5;border-top:1px solid #214551;padding:11px 5px 22px;display:flex;justify-content:space-around;color:#8198a2}
+nav button{background:none;border:0;color:inherit;font-size:12px}.navon{color:#00d99a!important}
 </style></head><body><main>
 <div class="brand">♞ UMA LAB</div><div class="sub">データで競馬を科学する</div>
-<h1>買い目作成</h1><div class="muted">中山11R・サンプル予想</div>
 
-<div class="card">
-<label>予算</label><input id="budget" type="number" min="100" step="100" value="5000">
-<label>券種</label><select id="type"><option>馬連</option><option>ワイド</option><option>三連複</option></select>
-<label>買い方</label><div class="segment">
-<button onclick="mode('safe',this)">堅め</button><button class="on" onclick="mode('balance',this)">バランス</button><button onclick="mode('attack',this)">穴狙い</button>
-</div>
-<button class="btn" onclick="makeBets()">AIで買い目を作成</button>
-</div>
+<section id="home" class="page on"><h1>今日のレース</h1><div class="card" onclick="go('races')"><div class="row"><b>中山11R</b><span class="badge">15:45</span></div><h2>UMA LAB サンプルステークス</h2><div class="muted">芝2000m・16頭</div></div><div class="card" onclick="go('races')"><b>阪神11R</b><div class="muted">芝1600m・サンプル</div></div></section>
 
-<div class="card"><div class="row"><span class="total">AI推奨買い目</span><span id="total" class="total green"></span></div><div id="bets"></div></div>
+<section id="races" class="page"><h1>出走馬一覧</h1><div id="horses"></div></section>
 
-<div class="card"><b class="green">配分の考え方</b><p id="comment" style="line-height:1.65;margin-bottom:0"></p></div>
-<div class="notice">※ 現在は架空データを使った開発用デモです。オッズはまだ連携していないため、現段階の金額配分はAI指数・印を使ったサンプルです。</div>
-<div class="version">UMA LAB v5</div>
-</main>
-<nav><span>⌂<br>ホーム</span><span>♞<br>レース</span><span>✦<br>AI予想</span><span class="active">▣<br>買い目</span><span>●<br>マイページ</span></nav>
+<section id="detail" class="page"><div class="back" onclick="go('races')">‹ 出走馬一覧</div><h1>3. ノーブルキング</h1>
+<div class="card"><b>C.ルメール</b><div class="muted">脚質　差し</div></div>
+<div class="card"><h2 class="green">AI指数 91/100</h2><div>距離適性 94</div><div class="bar"><div class="fill" style="width:94%"></div></div><div>コース適性 91</div><div class="bar"><div class="fill" style="width:91%"></div></div><div>展開適性 92</div><div class="bar"><div class="fill" style="width:92%"></div></div></div>
+<h2>直近5走</h2><div class="card" id="history"></div><button class="btn" onclick="go('ai')">この馬を含むAI予想を見る</button></section>
+
+<section id="ai" class="page"><h1>AI予想</h1><div class="muted">中山11R・サンプル分析</div>
+<div class="card"><b class="green">想定展開</b><p>平均ペース想定。中団から長く脚を使える馬を高く評価。</p></div><div id="picks"></div>
+<button class="btn" onclick="go('bets')">この予想から買い目を作成</button></section>
+
+<section id="bets" class="page"><h1>買い目作成</h1><div class="card"><b>予算</b><input id="budget" type="number" value="5000" step="100"><b>券種</b><select id="type"><option>馬連</option><option>ワイド</option><option>三連複</option></select><b>買い方</b><div class="segment"><button onclick="setMode('safe',this)">堅め</button><button class="on" onclick="setMode('balance',this)">バランス</button><button onclick="setMode('attack',this)">穴狙い</button></div><button class="btn" style="margin-top:15px" onclick="makeBets()">AIで買い目を作成</button></div><div class="card"><div class="row"><h2>AI推奨買い目</h2><b id="total" class="green"></b></div><div id="betlist"></div></div></section>
+
+<section id="mypage" class="page"><h1>マイページ</h1><div class="card"><h2>UMA LAB</h2><div class="muted">予想履歴・お気に入り馬・設定は今後追加予定</div></div></section>
+<div class="version">UMA LAB v6 統合版</div></main>
+
+<nav><button data-p="home" class="navon" onclick="go('home')">⌂<br>ホーム</button><button data-p="races" onclick="go('races')">♞<br>レース</button><button data-p="ai" onclick="go('ai')">✦<br>AI予想</button><button data-p="bets" onclick="go('bets')">▣<br>買い目</button><button data-p="mypage" onclick="go('mypage')">●<br>マイページ</button></nav>
 <script>
-let current="balance";
-function mode(m,e){current=m;document.querySelectorAll(".segment button").forEach(x=>x.classList.remove("on"));e.classList.add("on");makeBets()}
-function round100(x){return Math.max(100,Math.round(x/100)*100)}
-function makeBets(){
- let b=Math.max(300,Number(document.getElementById("budget").value)||5000), t=document.getElementById("type").value;
- let data,weights,comment;
- if(t==="馬連") data=[["3-1","◎ノーブルキング－○アルファスター","本命と対抗を中心"],["3-5","◎ノーブルキング－▲グリーンアロー","末脚評価の2頭"],["3-8","◎ノーブルキング－☆ミッドナイトベル","穴候補との組み合わせ"]];
- else if(t==="ワイド") data=[["1-3","○－◎","中心2頭の安定型"],["3-5","◎－▲","差し性能を評価"],["3-8","◎－☆","穴馬の食い込みを狙う"]];
- else data=[["1-3-5","○－◎－▲","上位評価3頭"],["1-3-8","○－◎－☆","本命軸＋穴"],["3-5-8","◎－▲－☆","差し展開を強く想定"]];
- if(current==="safe"){weights=[.55,.30,.15];comment="本命・対抗を中心に厚く配分。的中を意識した構成。"}
- if(current==="balance"){weights=[.45,.33,.22];comment="上位評価を中心にしつつ、穴候補にも予算を残すバランス型。"}
- if(current==="attack"){weights=[.30,.30,.40];comment="穴候補を含む買い目への配分を増やし、リターンを狙う構成。"}
- let amounts=[round100(b*weights[0]),round100(b*weights[1])]; amounts.push(Math.max(100,b-amounts[0]-amounts[1]));
- let sum=amounts.reduce((a,c)=>a+c,0);
- document.getElementById("total").textContent=sum.toLocaleString()+"円";
- document.getElementById("bets").innerHTML=data.map((x,i)=>`<div class="bet"><div class="row"><span class="combo">${t} ${x[0]}</span><span class="yen">${amounts[i].toLocaleString()}円</span></div><div class="why">${x[1]}｜${x[2]}</div></div>`).join("");
- document.getElementById("comment").textContent=comment+" 実データ版ではオッズも加え、期待値を考慮した配分へ発展させます。";
-}
+function go(id){document.querySelectorAll('.page').forEach(x=>x.classList.remove('on'));document.getElementById(id).classList.add('on');document.querySelectorAll('nav button').forEach(x=>x.classList.toggle('navon',x.dataset.p===id));scrollTo(0,0)}
+let horses=[["1","アルファスター","88","先行"],["3","ノーブルキング","91","差し"],["5","グリーンアロー","84","差し"],["8","ミッドナイトベル","78","追込"]];
+document.getElementById('horses').innerHTML=horses.map(h=>`<div class="card" onclick="${h[0]=='3'?"go('detail')":"alert('現在の詳細デモはノーブルキングで確認できます')"}"><div class="row"><div><span class="badge">${h[0]}番</span> <span class="horse">${h[1]}</span><div class="muted">脚質 ${h[3]}</div></div><span class="score">${h[2]}</span></div></div>`).join('');
+let hist=[["前走","2着","12-11-6-2","後方から一気に進出","33.8秒（1位）"],["2走前","5着","10-10-9-7","後方から差を詰める","34.1秒（2位）"],["3走前","1着","7-7-5-2","中団から徐々に進出","34.5秒（3位）"],["4走前","3着","8-8-7-4","中団後方から進出","34.0秒（2位）"],["5走前","1着","4-4-3-1","好位から抜け出し","33.9秒（1位）"]];
+document.getElementById('history').innerHTML=hist.map(r=>`<div class="race"><div class="row"><b>${r[0]}</b><b>${r[1]}</b></div><div class="passage">${r[2]}</div><div class="note">↗ ${r[3]}</div><div>上がり3F ${r[4]}</div></div>`).join('');
+let picks=[["◎","ノーブルキング",91,"上がり性能と位置取り上昇を評価","後方になりすぎると届かない可能性"],["○","アルファスター",88,"安定した先行力を評価","競られる展開に注意"],["▲","グリーンアロー",84,"近走の末脚が安定","スローでは位置取りが課題"],["☆","ミッドナイトベル",78,"差し展開で浮上余地","安定感は上位馬に劣る"]];
+document.getElementById('picks').innerHTML=picks.map(p=>`<div class="card pick"><div class="mark green">${p[0]}</div><div><b>${p[1]}</b><div>${p[3]}</div><div class="risk">△ ${p[4]}</div></div><b>${p[2]}</b></div>`).join('');
+let mode='balance';function setMode(m,e){mode=m;document.querySelectorAll('.segment button').forEach(x=>x.classList.remove('on'));e.classList.add('on');makeBets()}
+function makeBets(){let b=Math.max(300,+document.getElementById('budget').value||5000),t=document.getElementById('type').value,w=mode==='safe'?[.55,.3,.15]:mode==='attack'?[.3,.3,.4]:[.45,.33,.22],a=[Math.round(b*w[0]/100)*100,Math.round(b*w[1]/100)*100];a.push(Math.max(100,b-a[0]-a[1]));let c=t==='三連複'?['1-3-5','1-3-8','3-5-8']:['1-3','3-5','3-8'];document.getElementById('total').textContent=a.reduce((x,y)=>x+y,0).toLocaleString()+'円';document.getElementById('betlist').innerHTML=c.map((x,i)=>`<div class="race row"><b>${t} ${x}</b><b class="green">${a[i].toLocaleString()}円</b></div>`).join('')}
 makeBets();
 </script></body></html>
