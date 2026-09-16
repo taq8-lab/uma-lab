@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071018">
+<title>UMA LAB</title>
+<style>
+:root{--bg:#050c12;--panel:#0b1720;--panel2:#10222d;--line:#1d3440;--text:#f4f7f8;--muted:#91a5ae;--green:#00e68a;--gold:#f3c64b;--red:#ff6678}
+*{box-sizing:border-box} body{margin:0;background:#02070b;color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Noto Sans JP",sans-serif}
+.app{max-width:430px;min-height:100vh;margin:auto;background:linear-gradient(#071018,#050c12);position:relative;padding-bottom:78px}
+header{padding:22px 20px 14px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:flex;align-items:center;gap:10px}.horse{font-size:30px}.brand{font-weight:800;font-size:22px;letter-spacing:.5px}.tag{font-size:10px;color:var(--muted);margin-top:2px}
+.icon{font-size:22px;color:#c5d0d5}.hero{margin:0 16px 16px;height:170px;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(145deg,#18352d,#071117 65%);border:1px solid #203b43}
+.hero:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.15),rgba(0,0,0,.65))}
+.heroText{position:absolute;z-index:2;left:18px;bottom:16px}.heroText small{color:#dce7e9}.heroText h1{margin:5px 0;font-size:25px}.heroText p{margin:0;color:#a9bdc4;font-size:12px}
+.section{padding:0 16px;margin:18px 0}.sectionTitle{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}.sectionTitle h2{font-size:16px;margin:0}.link{font-size:11px;color:var(--green)}
+.races{display:grid;gap:8px}.race{background:var(--panel);border:1px solid var(--line);border-radius:13px;padding:11px 12px;display:flex;align-items:center;gap:10px}.track{width:43px;height:27px;border-radius:7px;display:grid;place-items:center;font-weight:800;font-size:11px;background:#00a968;color:#001b10}.race:nth-child(3) .track{background:#5865c7}.raceMain{flex:1}.raceMain b{font-size:13px}.raceMain span{display:block;color:var(--muted);font-size:10px;margin-top:3px}.arrow{color:#78909a}
+.cta{margin:16px;background:var(--green);color:#00150d;border:0;border-radius:16px;height:52px;width:calc(100% - 32px);font-weight:900;font-size:15px;box-shadow:0 8px 25px rgba(0,230,138,.12)}
+.card{background:linear-gradient(145deg,#0d1b25,#09141c);border:1px solid var(--line);border-radius:15px;padding:14px}.recommend{display:flex;gap:12px;align-items:center}.crown{font-size:27px}.recTitle{font-size:12px;color:var(--gold);font-weight:800}.recMain{font-weight:800;margin-top:3px}.recSub{font-size:10px;color:var(--muted);margin-top:3px}
+.bottom{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;height:70px;background:rgba(5,12,18,.96);border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(5,1fr);z-index:10}.nav{border:0;background:none;color:#7d9098;font-size:9px}.nav span{display:block;font-size:19px;margin-bottom:3px}.nav.active{color:var(--green)}
+.view{display:none}.view.active{display:block}
+.topbar{padding:10px 18px 14px;display:flex;align-items:center;gap:12px}.back{font-size:22px}.topbar h2{font-size:17px;margin:0}
+.pills{display:flex;gap:7px;overflow:auto;padding:0 16px 12px}.pill{white-space:nowrap;background:#0c1820;border:1px solid var(--line);color:#b8c6cb;border-radius:10px;padding:8px 12px;font-size:11px}.pill.active{background:#00b873;color:#00160e;border-color:#00b873;font-weight:800}
+.tabs{display:flex;padding:0 16px;border-bottom:1px solid var(--line)}.tab{flex:1;padding:11px 4px;text-align:center;color:var(--muted);font-size:11px;border-bottom:2px solid transparent}.tab.active{color:var(--green);border-color:var(--green)}
+.score{display:flex;gap:15px;align-items:center}.circle{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:conic-gradient(var(--green) 78%,#19333b 0);position:relative}.circle:after{content:"";position:absolute;width:66px;height:66px;background:#09151d;border-radius:50%}.circle strong{position:relative;z-index:1;font-size:24px}.circle small{position:absolute;z-index:1;margin-top:42px;font-size:8px;color:var(--muted)}
+.notice{margin-top:12px;padding:12px;background:#0a1921;border-radius:12px;font-size:11px;line-height:1.7;color:#b6c8ce}.metric{margin:11px 0}.metricHead{display:flex;justify-content:space-between;font-size:10px}.bar{height:7px;background:#142830;border-radius:99px;margin-top:5px;overflow:hidden}.bar i{display:block;height:100%;background:var(--green);border-radius:99px}
+.horseRow{display:flex;align-items:center;gap:11px;padding:11px 0;border-bottom:1px solid #17303a}.num{width:28px;height:28px;border-radius:7px;background:#0eaf78;display:grid;place-items:center;font-weight:900}.horseInfo{flex:1}.horseInfo b{font-size:12px}.horseInfo small{display:block;color:var(--muted);font-size:9px;margin-top:3px}.pts{font-weight:900;color:var(--green)}
+.betbox{margin-top:14px}.input{background:#f2f5f5;color:#0a1216;border-radius:10px;padding:13px;text-align:right;font-weight:800;font-size:17px}.choices{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin:10px 0}.choice{padding:9px 4px;border:1px solid var(--line);background:#0c1820;color:#b7c7cc;border-radius:8px;text-align:center;font-size:10px}.choice.active{background:#00b873;color:#00160e;font-weight:800}.bet{display:flex;justify-content:space-between;padding:10px 0;border-bottom:1px solid var(--line);font-size:11px}.bet b{color:var(--green)} 
+</style>
+<link rel="manifest" href="manifest.json"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"></head>
+<body>
+<div class="app">
+  <div id="home" class="view active">
+    <header><div class="logo"><div class="horse">♞</div><div><div class="brand">UMA LAB</div><div class="tag">データで競馬を科学する</div></div></div><div class="icon">☰</div></header>
+    <div class="hero"><div class="heroText"><small>本日の注目レース</small><h1>AIで勝負レースを発見</h1><p>馬場・展開・適性をまとめて分析</p></div></div>
+    <div class="section"><div class="sectionTitle"><h2>🏇 今日のレース</h2><span class="link">すべて見る ›</span></div>
+      <div class="races">
+        <div class="race"><div class="track">中山</div><div class="raceMain"><b>1R</b><span>10:10　芝1200m</span></div><div class="arrow">›</div></div>
+        <div class="race"><div class="track">中山</div><div class="raceMain"><b>2R</b><span>10:40　芝1800m</span></div><div class="arrow">›</div></div>
+        <div class="race"><div class="track">阪神</div><div class="raceMain"><b>1R</b><span>10:00　ダ1200m</span></div><div class="arrow">›</div></div>
+      </div>
+    </div>
+    <button class="cta" onclick="show('ai')">✣　AI予想する</button>
+    <div class="section"><div class="card recommend"><div class="crown">👑</div><div><div class="recTitle">UMA LAB 推奨</div><div class="recMain">中山11R スプリンターズS</div><div class="recSub">総合評価 95%　推奨予算 5,000円〜</div></div></div></div>
+  </div>
+
+  <div id="races" class="view">
+    <div class="topbar"><span class="back" onclick="show('home')">‹</span><h2>レース一覧</h2></div>
+    <div class="pills"><span class="pill active">9/13(土)</span><span class="pill">9/14(日)</span><span class="pill">9/15(月)</span></div>
+    <div class="pills"><span class="pill active">中山</span><span class="pill">阪神</span><span class="pill">福島</span><span class="pill">新潟</span></div>
+    <div class="section"><div class="races">
+      <div class="race"><div class="track">中山</div><div class="raceMain"><b>1R</b><span>10:10　芝1200m</span></div><span class="pill">出走表</span></div>
+      <div class="race"><div class="track">中山</div><div class="raceMain"><b>2R</b><span>10:40　芝1800m</span></div><span class="pill">出走表</span></div>
+      <div class="race"><div class="track">中山</div><div class="raceMain"><b>3R</b><span>11:10　芝2000m</span></div><span class="pill">出走表</span></div>
+      <div class="race"><div class="track">阪神</div><div class="raceMain"><b>1R</b><span>10:00　ダ1200m</span></div><span class="pill">出走表</span></div>
+    </div></div>
+  </div>
+
+  <div id="ai" class="view">
+    <div class="topbar"><span class="back" onclick="show('home')">‹</span><h2>AI予想</h2></div>
+    <div class="card" style="margin:0 16px"><div style="color:var(--green);font-size:11px;font-weight:800">推奨レース</div><h2 style="margin:7px 0 3px">中山11R</h2><div style="font-size:11px;color:var(--muted)">スプリンターズS　芝1200m</div></div>
+    <div class="tabs"><div class="tab active">AI分析</div><div class="tab">展開予想</div><div class="tab">レース情報</div></div>
+    <div class="section"><div class="card"><div style="font-size:11px;font-weight:800;margin-bottom:12px">🔒 AI総合評価</div><div class="score"><div class="circle"><strong>78</strong><small>/100</small></div><div style="font-size:11px;line-height:1.7;color:#bdcbd0">やや前残りの展開が予想されます。<br>先行力のある馬が有利。<br>内枠の適性・先行馬に注目です。</div></div></div>
+      <div class="card" style="margin-top:12px"><b style="font-size:11px">注目ポイント</b><div class="notice">🟢 馬場　良（やや内有利）<br>🔴 展開　前残りの可能性が高い<br>🟢 狙い目　先行馬・内枠・スピード型</div></div>
+      <div class="card" style="margin-top:12px"><b style="font-size:11px">馬別AI評価</b>
+        <div class="horseRow"><div class="num">7</div><div class="horseInfo"><b>ママコチャ</b><small>先行・スピード型</small></div><div class="pts">87</div></div>
+        <div class="horseRow"><div class="num" style="background:#c94a48">3</div><div class="horseInfo"><b>ウインマーベル</b><small>安定感・先行力</small></div><div class="pts">84</div></div>
+        <div class="horseRow"><div class="num" style="background:#f1c44c;color:#111">11</div><div class="horseInfo"><b>ルガル</b><small>コース適性・末脚</small></div><div class="pts">82</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="bets" class="view">
+    <div class="topbar"><span class="back" onclick="show('home')">‹</span><h2>買い目作成</h2></div>
+    <div class="section"><div class="card"><b>中山11R</b><span style="float:right;color:var(--muted);font-size:10px">スプリンターズS</span></div>
+      <div style="font-size:11px;margin:15px 0 7px">購入金額を入力</div><div class="input">5,000 円</div>
+      <div style="font-size:11px;margin:15px 0 7px">買い方を選択</div><div class="choices"><div class="choice">単勝</div><div class="choice">複勝</div><div class="choice">馬連</div><div class="choice">ワイド</div><div class="choice active">3連複</div><div class="choice">3連単</div></div>
+      <div class="card"><div style="color:var(--green);font-weight:800;font-size:11px">♛ AIおすすめ買い目</div>
+        <div class="bet"><span>7 - 3 - 11（本線）</span><b>2,000円</b></div>
+        <div class="bet"><span>7 - 5 - 11（抑え）</span><b>1,500円</b></div>
+        <div class="bet"><span>7 - 11 - 14（穴）</span><b>1,000円</b></div>
+        <div class="bet"><span>7 - 3 - 5（保険）</span><b>500円</b></div>
+      </div>
+      <button class="cta" style="margin:16px 0;width:100%">買い目を保存する</button>
+    </div>
+  </div>
+
+  <div id="mypage" class="view">
+    <div class="topbar"><h2>マイページ</h2></div>
+    <div class="section"><div class="card"><div style="display:flex;gap:12px;align-items:center"><div style="font-size:38px">👤</div><div><b>UMAユーザー</b><div style="color:var(--muted);font-size:10px;margin-top:3px">レベル3　　ポイント 1,250P</div></div></div></div>
+    <div class="races" style="margin-top:12px"><div class="race">▣　購入履歴 <span class="arrow">›</span></div><div class="race">◷　予想履歴 <span class="arrow">›</span></div><div class="race">⚙　設定 <span class="arrow">›</span></div><div class="race">？　よくある質問 <span class="arrow">›</span></div></div></div>
+  </div>
+
+  <nav class="bottom">
+    <button class="nav active" onclick="show('home',this)"><span>⌂</span>ホーム</button>
+    <button class="nav" onclick="show('races',this)"><span>♞</span>レース</button>
+    <button class="nav" onclick="show('ai',this)"><span>✦</span>AI予想</button>
+    <button class="nav" onclick="show('bets',this)"><span>▣</span>買い目</button>
+    <button class="nav" onclick="show('mypage',this)"><span>●</span>マイページ</button>
+  </nav>
+</div>
+<script>
+function show(id,btn){
+  document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  document.querySelectorAll('.nav').forEach(x=>x.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  else {
+    const map={home:0,races:1,ai:2,bets:3,mypage:4};
+    const n=map[id]; if(n!==undefined) document.querySelectorAll('.nav')[n].classList.add('active');
+  }
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body></html>
