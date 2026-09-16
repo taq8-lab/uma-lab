@@ -1,9 +1,9 @@
 {
   "name": "UMA LAB",
   "short_name": "UMA LAB",
-  "start_url": "./index.html",
+  "start_url": "./",
   "display": "standalone",
-  "background_color": "#050c12",
-  "theme_color": "#071018",
+  "background_color": "#061219",
+  "theme_color": "#061219",
   "lang": "ja"
 }
